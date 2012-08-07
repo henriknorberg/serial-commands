@@ -1,15 +1,18 @@
-cmnd0 = function (){
+cmnd0 = function (callback){
 	console.log("cmnd0 triggered");
-	\callback(null, 'one'
+	callback(null, 'zero');
 };
-cmnd1 = function (){
+cmnd1 = function (callback){
 	console.log("cmnd1 triggered");
+	callback(null, 'one');
 };
-cmnd2 = function (){
+cmnd2 = function (callback){
 	console.log("cmnd2 triggered");
+	callback(null, 'two');
 };
-cmnd3 = function (){
+cmnd3 = function (callback){
 	console.log("cmnd3 triggered");
+	callback(null, 'three');
 };
 
 triggerMeWhenDone = function (){

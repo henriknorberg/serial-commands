@@ -1,0 +1,22 @@
+{
+  "name": "serial-commands",
+  "version": "0.0.0",
+  "description": "Async serial commands",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/henriknorberg/serial-commands"
+  },
+  "keywords": [
+    "Async",
+    "flow",
+    "controll¸",
+    "queue",
+    "commands"
+  ],
+  "author": "Hnerik A. Norberg",
+  "license": "MIT"
+}

@@ -1,27 +1,24 @@
 async = require('async');
 
-var serial-commands = module.exports = function (opts, cb) {
-    if (typeof opts === 'object') {
-        return new serialCommands(opts, cb);
-    }
-    else {
-        return new SerialCommands(cb, opts);
-    }
+var serialCommands = module.exports = function (opts, cb) {
+
+        return new SerialCommands(opts, cb);
 };
 
 function SerialCommands (cmnds,cb){
-	if (!cmnds) this.commands = [];
+	if (!cmnds) this.commands = []; 
+    else {  this.commands = cmnds};
 	this.callback = cb;
 }
 
-serialCommands.prototype.addCommand = function(cmnd){
+SerialCommands.prototype.addCommand = function(cmnd){
 	this.commands.push(cmnd);
 };
 
-serialCommands.prototype.addCommandAt = function(indx,cmnd){
+SerialCommands.prototype.addCommandAt = function(indx,cmnd){
 	this.commands.splice(indx, 0, cmnd);
 };
 
-serialCommands.prototype.execute = function(){
-	async.serial(this.commands, this.callback);
+SerialCommands.prototype.execute = function(){
+	async.series(this.commands, this.callback);
 };

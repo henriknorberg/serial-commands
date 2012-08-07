@@ -5,17 +5,17 @@ var serial-commands = module.exports = function (opts, cb) {
         return new serialCommands(opts, cb);
     }
     else {
-        return new serialCommands(cb, opts);
+        return new SerialCommands(cb, opts);
     }
 };
 
-function serialCommands (cmnds,cb){
+function SerialCommands (cmnds,cb){
 	if (!cmnds) this.commands = [];
 	this.callback = cb;
 }
 
 serialCommands.prototype.addCommand = function(cmnd){
-	this.addCommandAt(cmnd);
+	this.commands.push(cmnd);
 };
 
 serialCommands.prototype.addCommandAt = function(indx,cmnd){

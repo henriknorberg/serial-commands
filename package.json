@@ -1,6 +1,6 @@
 {
   "name": "serial-commands",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Async serial commands",
   "main": "index.js",
   "directories": {

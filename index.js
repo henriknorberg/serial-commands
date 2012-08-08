@@ -1,4 +1,4 @@
-async = require('async');
+var async = require('async');
 
 var serialCommands = module.exports = function (opts, cb) {
 
@@ -6,9 +6,11 @@ var serialCommands = module.exports = function (opts, cb) {
 };
 
 function SerialCommands (cmnds,cb){
-   
-     this.commands = [];
+    
+    var that = this;
+    this.commands = [];
 
+     if (cmnds){
     // Please refactor into addCommandAt
     this.commands = cmnds.map(function(cmnd){
       if(typeof cmnd === "object" && typeof cmnd.execute === "function"){
@@ -19,8 +21,15 @@ function SerialCommands (cmnds,cb){
             console.log("SerialCommands: Tried to add non command " + cmnd);
         }
     });
-   
+   }
+
     this.callback = cb;
+
+    this.execute = function(cllbck){
+        async.series(that.commands, that.callback);
+       
+        if (typeof cllbck === "function") cllbck(null);
+    };
 }
 
 SerialCommands.prototype.addCommand = function(cmnd){
@@ -42,6 +51,12 @@ SerialCommands.prototype.addCommandAt = function(indx,cmnd){
 
 };
 
-SerialCommands.prototype.execute = function(){
+/*
+SerialCommands.prototype.execute = function(cllbck){
+     console.log("-"+ r);
 	async.series(this.commands, this.callback);
+   
+    if (typeof cllbck === "function") cllbck(null);
 };
+
+*/

@@ -1,6 +1,6 @@
 serial-commands
 =================
-Async serial queue for commands. 
+Async serial queue for commands for node.js. 
 
 ```javascript
 
